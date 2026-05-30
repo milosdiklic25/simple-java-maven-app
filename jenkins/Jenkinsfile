@@ -17,13 +17,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'JA SAM $NAME ${.params.LASTNAME}'
-            }
-
-            post {
-                success {
-                    archiveArtifacts artifacts: '**/target/*.jar'
-                }
+                echo "JA SAM $NAME ${.params.LASTNAME}"
             }
         }
     }
