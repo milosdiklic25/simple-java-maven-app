@@ -6,10 +6,14 @@ pipeline {
         maven 'mymaven'
     }
 
+    environment {
+        NAME = 'Milos'
+    }
+
     stages {
         stage('build') {
             steps {
-                sh 'mvn clean package'
+                echo 'JA SAM $NAME'
             }
 
             post {
