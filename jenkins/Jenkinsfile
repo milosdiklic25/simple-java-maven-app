@@ -9,19 +9,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo "this is build stage"
+                sh 'mvn clean package'
             }
-        }
 
-        stage('test') {
-            steps {
-                echo "this is test stage"
-            }
-        }
-
-        stage('deply') {
-            steps {
-                echo "this is deploy stage"
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
             }
         }
     }
