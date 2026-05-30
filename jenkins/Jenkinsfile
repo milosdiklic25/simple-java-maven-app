@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo "JA SAM $NAME ${.params.LASTNAME}"
+                echo "JA SAM $NAME ${params.LASTNAME}"
             }
         }
     }
