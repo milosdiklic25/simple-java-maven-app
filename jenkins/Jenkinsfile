@@ -1,16 +1,28 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:22'
-    }
-  }
 
-  stages {
-    stage('Test') {
-      steps {
-        sh 'node --version'
-        sh 'npm test'
-      }
+    agent {
+        docker {
+            image 'alpine'
+        }
     }
-  }
+
+    stages {
+        stage('build') {
+            steps {
+                echo "this is build stage"
+            }
+        }
+
+        stage('test') {
+            steps {
+                echo "this is test stage"
+            }
+        }
+
+        stage('deply') {
+            steps {
+                echo "this is deploy stage"
+            }
+        }
+    }
 }
