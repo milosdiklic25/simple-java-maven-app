@@ -20,5 +20,21 @@ pipeline {
                 echo "JA SAM $NAME ${params.LASTNAME}"
             }
         }
+
+        stage('test') {
+            parallel {
+                stage('testA') {
+                    steps {
+                        echo "Test A"
+                    }
+                }
+
+                stage('testB') {
+                    steps {
+                        echo "Test B"
+                    }
+                }
+            }
+        }
     }
 }
