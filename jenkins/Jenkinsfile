@@ -10,10 +10,14 @@ pipeline {
         NAME = 'Milos'
     }
 
+    parameters {
+        string defaultValue: 'Diklic', name: 'LASTNAME'
+    }
+
     stages {
         stage('build') {
             steps {
-                echo 'JA SAM $NAME'
+                echo 'JA SAM $NAME ${.params.LASTNAME}'
             }
 
             post {
