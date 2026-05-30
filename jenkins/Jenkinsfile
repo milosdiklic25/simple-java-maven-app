@@ -11,13 +11,13 @@ pipeline {
     }
 
     parameters {
-        string defaultValue: 'Diklic', name: 'LASTNAME'
+        choice choices: ['dev', 'prod'], name: 'select environment'
     }
 
     stages {
         stage('build') {
             steps {
-                echo "JA SAM $NAME ${params.LASTNAME}"
+                sh 'mvn clean package -DskipTests=true'
             }
         }
 
@@ -26,12 +26,14 @@ pipeline {
                 stage('testA') {
                     steps {
                         echo "Test A"
+                        sh 'mvn test'
                     }
                 }
 
                 stage('testB') {
                     steps {
                         echo "Test B"
+                        sh 'mvn test'
                     }
                 }
             }
